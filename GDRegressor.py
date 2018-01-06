@@ -1,9 +1,11 @@
 import numpy as np
 
+print ('hello')
 
 def step_gradient(b, m, points, learning_rate):
     #gradient descent
     pass
+    print('haaha')
 
 
 def gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_of_iterations):
