@@ -35,10 +35,12 @@ class ProgressIndicator:
 
         estimated_completion_time = 0
         if len(self.execution_times) != 0:
-            estimated_completion_time = sum(self.execution_times) / len(self.execution_times) * (total - len(self.execution_times))
+            estimated_completion_time = (sum(self.execution_times) / len(self.execution_times) *
+                                         (total - len(self.execution_times))) * 2
 
         caller_name = sys._getframe(1).f_code.co_name
-        sys.stdout.write('\r{} x {} |{}|{}{} ETC-{} {}'.format(self.prefix, caller_name, bar, percents, '%', truncate(estimated_completion_time, 1), self.suffix)),
+        sys.stdout.write('\r{} x {} |{}|{}{} ETC-{} {}'.format(
+            self.prefix, caller_name, bar, percents, '%', truncate(estimated_completion_time, 1), self.suffix)),
 
         if iteration == total:
             sys.stdout.write('\n')
