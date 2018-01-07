@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import numpy.linalg as LA
 import time
-from Util import print_progress, truncate
+from Util import ProgressIndicator, truncate
 
 
 def calc_ms_error_simple(data, b, m):
@@ -72,9 +72,11 @@ def gradient_descent_runner(data, initial_b, initial_m, learning_rate, num_of_it
     b = initial_b
     m = initial_m
 
+    progress_indicator = ProgressIndicator(1, num_of_iterations)
     for i in range(num_of_iterations):
-        print_progress(i, num_of_iterations)
+        progress_indicator.advance_iter(i, num_of_iterations)
         b, m = step_gradient(b, m, np.array(data), learning_rate)
+    progress_indicator.print_total_execution_time()
     return b, m
 
 
@@ -149,7 +151,6 @@ def run():
     grad_desender.fit_continuous(points)
 
     grad_desender.predict(20)
-    print('Execution Time: {0}s'.format(truncate(time.time() - start_time, 2)))
     print('Final value b: {}\nFinal value m: {}'.format(grad_desender.b, grad_desender.m))
     print('Final RMSE: {0}'.format(truncate(grad_desender.get_error(points), 2)))
     grad_desender.draw_result(points)
