@@ -1,10 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import numpy.linalg as LA
-import sys
+import time
+from Util import print_progress, truncate
 
 
-def calc_mserror(b, m, data):
+def calc_ms_error_simple(data, b, m):
+    total_error = 0
+
+    for x, y in zip(data.T[0], data.T[1]):
+        total_error += (y - (m * x + b)) ** 2
+    return total_error / len(data)
+
+
+def calc_ms_error_projected(data, b, m):
     line_start_point = np.array([0, b])
     line_end_point = np.array([100, 100 * m + b])
 
@@ -22,58 +31,80 @@ def calc_mserror(b, m, data):
     proj = proj_local + line_start_point
 
     errors = []
-    for x3, y3 in zip(data, proj):
-        errors.append(np.power(x3 - y3, 2))
+    for x, y in zip(data, proj):
+        errors.append(np.power(x - y, 2))
 
     errors = np.array(errors)
     return errors.mean()
 
 
-def step_gradient(b, m, points, learning_rate):
-    # gradient descent
-    mserror = calc_mserror(b, m, points)
-
-    mserror_b_inc = calc_mserror(b + learning_rate * mserror, m, points)
-    if mserror_b_inc < mserror:
-        b += learning_rate
-    else:
-        b -= learning_rate
-
-    mserror_m_inc = calc_mserror(b, m + learning_rate * mserror, points)
-    if mserror_m_inc < mserror:
+def naive_stepper(b, m, points, learning_rate):
+    ms_error = calc_ms_error_projected(points, b, m)
+    ms_error_m_inc = calc_ms_error_projected(points, b, m + learning_rate * ms_error)
+    if ms_error_m_inc < ms_error:
         m += learning_rate
     else:
         m -= learning_rate
 
+    ms_error = calc_ms_error_projected(points, b, m)
+    ms_error_b_inc = calc_ms_error_projected(points, b + learning_rate * ms_error, m)
+    if ms_error_b_inc < ms_error:
+        b += learning_rate
+    else:
+        b -= learning_rate
+
     return b, m
 
 
-def gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_of_iterations):
+def step_gradient(b_current, m_current, data, learning_rate):
+    b_gradient = 0
+    m_gradient = 0
+    N = len(data)
+    for x, y in zip(data.T[0], data.T[1]):
+        b_gradient += -(2/N) * (y - ((m_current * x) + b_current))
+        m_gradient += -(2/N) * x * (y - ((m_current * x) + b_current))
+    new_b = b_current - (learning_rate * b_gradient)
+    new_m = m_current - (learning_rate * m_gradient)
+    return new_b, new_m
+
+
+def gradient_descent_runner(data, initial_b, initial_m, learning_rate, num_of_iterations):
     b = initial_b
     m = initial_m
 
     for i in range(num_of_iterations):
         print_progress(i, num_of_iterations)
-        b, m = step_gradient(b, m, np.array(points), learning_rate)
+        b, m = step_gradient(b, m, np.array(data), learning_rate)
     return b, m
 
 
 class GradientDescender:
-    def __init__(self, initial_b=0, initial_m=0, learning_rate=0.001, num_of_iterations=2000):
-        self.initial_b = initial_b
-        self.initial_m = initial_m
+    def __init__(self, initial_b=0, initial_m=0, learning_rate=0.0001, num_of_iterations=1000):
+        self.b = initial_b
+        self.m = initial_m
         self.learning_rate = learning_rate
         self.num_of_iterations = num_of_iterations
-        self.b = 0
-        self.m = 0
         self.predicted = None
 
-    def fit(self, data):
-        self.b, self.m = gradient_descent_runner(data, self.initial_b, self.initial_m, self.learning_rate, self.num_of_iterations)
+    def reset(self):
+        self.b = self.initial_b
+        self.m = self.initial_m
+        self.predicted = None
+
+    def fit_continuous(self, data):
+        self.b, self.m = gradient_descent_runner(
+            data, self.b, self.m, self.learning_rate, self.num_of_iterations)
 
     def predict(self, X):
         self.predicted = np.array([X, np.array(X) * self.m + self.b])
         return self.predicted
+
+    def get_error(self, data, rmse=True):
+        mse = calc_ms_error_simple(data, self.m, self.b)
+        if rmse:
+            return mse ** 0.5
+        else:
+            return mse
 
     def draw_result(self, data, draw_predicted=True):
         x1, y1 = zip(data.T)
@@ -110,37 +141,18 @@ class GradientDescender:
         plt.grid()
         plt.show()
 
-
-
-def print_progress(iteration, total, prefix='', suffix='', decimals=1, bar_length=100):
-    """
-    Call in a loop to create terminal progress bar
-    @params:
-        iteration   - Required  : current iteration (Int)
-        total       - Required  : total iterations (Int)
-        prefix      - Optional  : prefix string (Str)
-        suffix      - Optional  : suffix string (Str)
-        decimals    - Optional  : positive number of decimals in percent complete (Int)
-        bar_length  - Optional  : character length of bar (Int)
-    """
-    str_format = "{0:." + str(decimals) + "f}"
-    percents = str_format.format(100 * (iteration / float(total)))
-    filled_length = int(round(bar_length * iteration / float(total)))
-    bar = '█' * filled_length + '-' * (bar_length - filled_length)
-
-    sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
-
-    if iteration == total:
-        sys.stdout.write('\n')
-    sys.stdout.flush()
-
-
 def run():
+    start_time = time.time()
     points = np.genfromtxt('data.csv', delimiter=',')
-    grad_des = GradientDescender(num_of_iterations=2000)
-    grad_des.fit(points)
-    print(grad_des.predict(20))
-    grad_des.draw_result(points, draw_predicted=True)
+
+    grad_desender = GradientDescender(num_of_iterations=50000)
+    grad_desender.fit_continuous(points)
+
+    grad_desender.predict(20)
+    print('Execution Time: {0}s'.format(truncate(time.time() - start_time, 2)))
+    print('Final value b: {}\nFinal value m: {}'.format(grad_desender.b, grad_desender.m))
+    print('Final RMSE: {0}'.format(truncate(grad_desender.get_error(points), 2)))
+    grad_desender.draw_result(points)
 
 
 if __name__ == '__main__':
