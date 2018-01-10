@@ -5,7 +5,6 @@
       <changelist_data name="Johannes C. Mayer" email="j.c.mayer240@gmail.com" date="1515237662000" />
     </list>
     <list default="true" id="1c50d969-0959-40fc-887c-586e0284b788" name="Default" comment="formated file correctly">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/GDRegressor.py" afterPath="$PROJECT_DIR$/GDRegressor.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,12 +22,12 @@
       <file leaf-file-name="GDRegressor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GDRegressor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="149" column="105" lean-forward="false" selection-start-line="149" selection-start-column="105" selection-end-line="149" selection-end-column="105" />
+            <state relative-caret-position="258">
+              <caret line="168" column="49" lean-forward="true" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#402#1072#0" expanded="false" />
-                <element signature="e#6000#6914#0" expanded="false" />
+                <element signature="e#5930#6844#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -37,8 +36,8 @@
       <file leaf-file-name="AniTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AniTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="345">
+              <caret line="23" column="14" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="23" selection-end-column="14" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -316,6 +315,9 @@
     <history-entry file="Twisted_Trial_in_EvaForReg_py - 2018.01.07 at 19h 24m 41s.xml">
       <configuration name="Twisted Trial in EvaForReg.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Twisted_Trial_in_EvaForReg_py - 2018.01.10 at 08h 01m 43s.xml">
+      <configuration name="Twisted Trial in EvaForReg.py" configurationId="tests" />
+    </history-entry>
     <history-entry file="Twisted_Trial_in_TestsForReg_py - 2018.01.07 at 19h 24m 03s.xml">
       <configuration name="Twisted Trial in TestsForReg.py" configurationId="tests" />
     </history-entry>
@@ -351,7 +353,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.49710068" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3286638" sideWeight="0.4949921" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3286638" sideWeight="0.4949921" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24986821" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.375" sideWeight="0.49815497" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18450184" sideWeight="0.50643086" order="2" side_tool="true" content_ui="tabs" />
@@ -405,7 +407,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="16" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -453,7 +455,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -473,7 +475,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -485,7 +487,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -497,7 +499,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -509,7 +511,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -521,7 +523,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -533,7 +535,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -545,7 +547,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -557,7 +559,7 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -646,14 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/_jb_trialtest_runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/au.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -713,10 +707,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/_jb_trialtest_runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AniTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="345">
+          <caret line="23" column="14" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="23" selection-end-column="14" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -725,12 +729,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GDRegressor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="149" column="105" lean-forward="false" selection-start-line="149" selection-start-column="105" selection-end-line="149" selection-end-column="105" />
+        <state relative-caret-position="258">
+          <caret line="168" column="49" lean-forward="true" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#6000#6914#0" expanded="false" />
+            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>

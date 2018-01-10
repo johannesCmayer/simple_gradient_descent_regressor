@@ -82,7 +82,7 @@ def gradient_descent_runner(data, initial_b, initial_m, learning_rate, num_of_it
     progress_indicator = ProgressIndicator(1, num_of_iterations)
     for i in range(num_of_iterations):
         progress_indicator.advance_iter(i, num_of_iterations)
-        b, m = step_gradient(b, m, np.array(data), learning_rate)
+        b, m = naive_stepper(b, m, np.array(data), learning_rate)
         all_b.append(b)
         all_m.append(m)
     progress_indicator.print_total_execution_time()
@@ -125,60 +125,58 @@ class GradientDescender:
     def draw_result(self, data, draw_predicted=True):
         fig, ax = plt.subplots()
 
-        # x1, y1 = zip(data.T)
-        # ax.plot(x1, y1, 'ro', alpha=0.6)
-        #
-        # line_start_point = np.array([0, self.b])
-        # line_end_point = np.array([100, 100 * self.m + self.b])
-        #
-        # x2, y2 = zip(line_start_point, line_end_point)
+        x1, y1 = zip(data.T)
+        ax.plot(x1, y1, 'ro', alpha=0.6)
 
-        ln, = ax.plot([],[], 'b-', animated=True)
+        ln, = plt.plot([], [], 'r-', animated=True)
 
         def init():
             ax.set_xlim(0, 100)
-            ax.set_ylim(0,100)
-            return ln
+            ax.set_ylim(0, 140)
+            return ln,
 
-        def update_anim(frame):
-            line_start_point = np.array([0, self.ln_b_data[frame]])
-            line_end_point = np.array([100, 100 * self.ln_m_data[frame] + self.ln_b_data[frame]])
+        speed = 40
+        def update(frame):
+
+            line_start_point = np.array([0, self.ln_b_data[int(frame*speed)]])
+            line_end_point = np.array([100, 100 * self.ln_m_data[int(frame*speed)] + self.ln_b_data[int(frame*speed)]])
             x2, y2 = zip(line_start_point, line_end_point)
             ln.set_data(x2, y2)
-            return ln
+            return ln,
 
-        ani = anim.FuncAnimation(fig, update_anim, frames=len(self.ln_b_data), init_func=init, blit=False)
+        ani = anim.FuncAnimation(fig, update, frames=int(len(self.ln_b_data)/speed),
+                            init_func=init, blit=True, repeat=False)
 
-        # line_end_point_local = line_end_point - line_start_point
-        # norm_line_vec_local = line_end_point_local / LA.norm(line_end_point_local)
-        #
-        # data_in_local_line_space = data - line_start_point
-        #
-        # projected_local = []
-        # for vec in data_in_local_line_space:
-        #     a = (np.dot(vec, norm_line_vec_local) * norm_line_vec_local)
-        #     projected_local.append(a)
-        # projected_local = np.array(projected_local)
-        #
-        # proj = projected_local + line_start_point
-        #
-        # for x3, y3 in zip(data, proj):
-        #     x3, y3 = zip(x3, y3)
-        #     plt.plot(x3, y3, 'b-', alpha=0.1)
-        #
-        # if draw_predicted and self.predicted is not None:
-        #     x4, y4 = zip(self.predicted)
-        #     plt.plot(x4, y4, 'go', alpha=1)
-        #
-        # plt.axis('equal')
-        # plt.grid()
+        plt.grid()
         plt.show()
+
+        def draw_error(line_end_point, line_start_point):
+            line_end_point_local = line_end_point - line_start_point
+            norm_line_vec_local = line_end_point_local / LA.norm(line_end_point_local)
+
+            data_in_local_line_space = data - line_start_point
+
+            projected_local = []
+            for vec in data_in_local_line_space:
+                a = (np.dot(vec, norm_line_vec_local) * norm_line_vec_local)
+                projected_local.append(a)
+            projected_local = np.array(projected_local)
+
+            proj = projected_local + line_start_point
+
+            for x3, y3 in zip(data, proj):
+                x3, y3 = zip(x3, y3)
+                plt.plot(x3, y3, 'b-', alpha=0.1)
+
+            if draw_predicted and self.predicted is not None:
+                x4, y4 = zip(self.predicted)
+                plt.plot(x4, y4, 'go', alpha=1)
 
 def run():
     start_time = time.time()
     points = np.genfromtxt('data.csv', delimiter=',')
 
-    grad_desender = GradientDescender(num_of_iterations=10)
+    grad_desender = GradientDescender(num_of_iterations=5000, learning_rate=0.0001)
     grad_desender.fit_continuous(points)
 
     grad_desender.predict(20)
