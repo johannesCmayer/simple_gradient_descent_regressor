@@ -5,7 +5,9 @@
       <changelist_data name="Johannes C. Mayer" email="j.c.mayer240@gmail.com" date="1515237662000" />
     </list>
     <list default="true" id="1c50d969-0959-40fc-887c-586e0284b788" name="Default" comment="formated file correctly">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/GDRegressor.py" afterPath="$PROJECT_DIR$/GDRegressor.py" />
+      <change beforePath="$PROJECT_DIR$/Util.py" afterPath="$PROJECT_DIR$/Util.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,12 +24,11 @@
       <file leaf-file-name="GDRegressor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GDRegressor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="168" column="49" lean-forward="true" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
+            <state relative-caret-position="243">
+              <caret line="153" column="18" lean-forward="true" selection-start-line="153" selection-start-column="18" selection-end-line="153" selection-end-column="18" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#402#1072#0" expanded="false" />
-                <element signature="e#5930#6844#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -36,8 +37,8 @@
       <file leaf-file-name="AniTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AniTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="14" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="23" selection-end-column="14" />
+            <state relative-caret-position="150">
+              <caret line="10" column="15" lean-forward="true" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -48,8 +49,8 @@
       <file leaf-file-name="Util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="465">
+              <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#54#504#1" expanded="false" />
@@ -86,8 +87,8 @@
         <option value="$PROJECT_DIR$/au.py" />
         <option value="$PROJECT_DIR$/EvaForReg.py" />
         <option value="$PROJECT_DIR$/GDRegDemo.py" />
-        <option value="$PROJECT_DIR$/Util.py" />
         <option value="$PROJECT_DIR$/AniTest.py" />
+        <option value="$PROJECT_DIR$/Util.py" />
         <option value="$PROJECT_DIR$/GDRegressor.py" />
       </list>
     </option>
@@ -455,7 +456,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -475,7 +475,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -487,7 +486,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -499,7 +497,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -511,7 +508,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -523,7 +519,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -535,7 +530,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -547,7 +541,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -559,7 +552,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -688,17 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#54#504#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/matplotlib/animation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -719,22 +700,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AniTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="14" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="150">
+          <caret line="10" column="15" lean-forward="true" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="40" column="31" lean-forward="false" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#54#504#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GDRegressor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="168" column="49" lean-forward="true" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
+        <state relative-caret-position="243">
+          <caret line="153" column="18" lean-forward="true" selection-start-line="153" selection-start-column="18" selection-end-line="153" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#402#1072#0" expanded="false" />
-            <element signature="e#5930#6844#0" expanded="false" />
           </folding>
         </state>
       </provider>

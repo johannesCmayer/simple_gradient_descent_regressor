@@ -13,8 +13,7 @@ class ProgressIndicator:
         decimals    - Optional  : positive number of decimals in percent complete (Int)
         bar_length  - Optional  : character length of bar (Int)
     """
-    def __init__(self, total, prefix='', suffix='', decimals=1, bar_length=100):
-        self.total = total
+    def __init__(self, prefix='', suffix='', decimals=1, bar_length=100):
         self.prefix = prefix
         self.suffix = suffix
         self.decimals = decimals
@@ -34,12 +33,12 @@ class ProgressIndicator:
         bar = '█' * filled_length + '-' * (self.bar_length - filled_length)
 
         estimated_completion_time = 0
-        if len(self.execution_times) != 0:
+        if len(self.execution_times) != 0 and iteration != 0:
             estimated_completion_time = (sum(self.execution_times) / len(self.execution_times) *
-                                         (total - len(self.execution_times))) * 2
+                                         (total - len(self.execution_times)))
 
         caller_name = sys._getframe(1).f_code.co_name
-        sys.stdout.write('\r{} x {} |{}|{}{} ETC-{} {}'.format(
+        sys.stdout.write('\r{} {} |{}|{}{} ETC-{} {}'.format(
             self.prefix, caller_name, bar, percents, '%', truncate(estimated_completion_time, 1), self.suffix)),
 
         if iteration == total:

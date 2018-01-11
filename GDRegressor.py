@@ -52,7 +52,7 @@ def naive_stepper(b, m, points, learning_rate):
     for i in range(20):
         ms_error = calc_ms_error_projected(points, b, m)
         ms_error_b_inc = calc_ms_error_projected(points, b + learning_rate * ms_error, m)
-        if ms_error_b_inc < ms_error:
+        if ms_error_b_inc > ms_error:
             b += learning_rate
         else:
             b -= learning_rate
@@ -82,7 +82,7 @@ def gradient_descent_runner(data, initial_b, initial_m, learning_rate, num_of_it
     progress_indicator = ProgressIndicator(1, num_of_iterations)
     for i in range(num_of_iterations):
         progress_indicator.advance_iter(i, num_of_iterations)
-        b, m = naive_stepper(b, m, np.array(data), learning_rate)
+        b, m = step_gradient(b, m, np.array(data), learning_rate)
         all_b.append(b)
         all_m.append(m)
     progress_indicator.print_total_execution_time()
@@ -110,7 +110,6 @@ class GradientDescender:
         self.b = self.ln_b_data[-1]
         self.m = self.ln_m_data[-1]
 
-
     def predict(self, X):
         self.predicted = np.array([X, np.array(X) * self.m + self.b])
         return self.predicted
@@ -126,104 +125,45 @@ class GradientDescender:
         fig, ax = plt.subplots()
 
         x1, y1 = zip(data.T)
-        ax.plot(x1, y1, 'ro', alpha=0.6)
+        ax.plot(x1, y1, 'ro', alpha=0.3)
 
-        ln, = plt.plot([], [], 'r-', animated=True)
+        ln, = ax.plot([], [], 'b-', alpha=0.4,animated=True)
+
+        x2, y3 = zip(self.predicted)
+        ax.plot(x2, y3, 'go', alpha=0.6)
 
         def init():
-            ax.set_xlim(0, 100)
-            ax.set_ylim(0, 140)
+            ax.set_xlim(-100, 100)
+            ax.set_ylim(-140, 140)
             return ln,
 
-        speed = 40
-        def update(frame):
+        data.T[0].max()
+        speed = 1
 
-            line_start_point = np.array([0, self.ln_b_data[int(frame*speed)]])
+        def update(frame):
+            line_start_point = np.array([-100, -100 * self.ln_m_data[int(frame*speed)] - self.ln_b_data[int(frame*speed)]])
             line_end_point = np.array([100, 100 * self.ln_m_data[int(frame*speed)] + self.ln_b_data[int(frame*speed)]])
             x2, y2 = zip(line_start_point, line_end_point)
             ln.set_data(x2, y2)
             return ln,
 
-        ani = anim.FuncAnimation(fig, update, frames=int(len(self.ln_b_data)/speed),
+        no_gc_ref = anim.FuncAnimation(fig, update, frames=int(len(self.ln_b_data)/speed),
                             init_func=init, blit=True, repeat=False)
 
         plt.grid()
         plt.show()
 
-        def draw_error(line_end_point, line_start_point):
-            line_end_point_local = line_end_point - line_start_point
-            norm_line_vec_local = line_end_point_local / LA.norm(line_end_point_local)
-
-            data_in_local_line_space = data - line_start_point
-
-            projected_local = []
-            for vec in data_in_local_line_space:
-                a = (np.dot(vec, norm_line_vec_local) * norm_line_vec_local)
-                projected_local.append(a)
-            projected_local = np.array(projected_local)
-
-            proj = projected_local + line_start_point
-
-            for x3, y3 in zip(data, proj):
-                x3, y3 = zip(x3, y3)
-                plt.plot(x3, y3, 'b-', alpha=0.1)
-
-            if draw_predicted and self.predicted is not None:
-                x4, y4 = zip(self.predicted)
-                plt.plot(x4, y4, 'go', alpha=1)
 
 def run():
-    start_time = time.time()
     points = np.genfromtxt('data.csv', delimiter=',')
+    grad_descender = GradientDescender(num_of_iterations=200, learning_rate=0.0001)
+    grad_descender.fit_continuous(points)
 
-    grad_desender = GradientDescender(num_of_iterations=5000, learning_rate=0.0001)
-    grad_desender.fit_continuous(points)
+    grad_descender.predict(20)
+    print('Final value b: {}\nFinal value m: {}'.format(grad_descender.b, grad_descender.m))
+    print('Final RMSE: {0}'.format(truncate(grad_descender.get_error(points), 2)))
+    grad_descender.draw_result(points)
 
-    grad_desender.predict(20)
-    print('Final value b: {}\nFinal value m: {}'.format(grad_desender.b, grad_desender.m))
-    print('Final RMSE: {0}'.format(truncate(grad_desender.get_error(points), 2)))
-    grad_desender.draw_result(points)
-
-def test_anim():
-
-    def data_gen(t=0):
-        cnt = 0
-        while cnt < 1000:
-            cnt += 1
-            t += 0.1
-            yield t, np.sin(2 * np.pi * t) * np.exp(-t / 10.)
-
-    def init():
-        ax.set_ylim(-1.1, 1.1)
-        ax.set_xlim(0, 80)
-        del xdata[:]
-        del ydata[:]
-        line.set_data(xdata, ydata)
-        return line,
-
-    fig, ax = plt.subplots()
-    line, = ax.plot([], [], lw=2)
-    ax.grid()
-    xdata, ydata = [], []
-
-    def run(data):
-        # update the data
-        t, y = data
-        xdata.append(t)
-        ydata.append(y)
-        xmin, xmax = ax.get_xlim()
-
-        if t >= xmax:
-            ax.set_xlim(xmin, 2 * xmax)
-            ax.figure.canvas.draw()
-        line.set_data(xdata, ydata)
-
-        return line,
-
-    no_gc_ani_ref = anim.FuncAnimation(fig, run, data_gen, blit=True, interval=0.0001,
-                                  repeat=True, init_func=init)
-    plt.show()
 
 if __name__ == '__main__':
-    #test_anim()
     run()
